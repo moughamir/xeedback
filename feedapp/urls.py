@@ -18,5 +18,6 @@ urlpatterns = patterns('',
 
     url(r'^csp/', include('cspreports.urls')),
 
-    url(r'^auth/', include('djangae.contrib.gauth.urls')),
+    # url(r'^auth/', include('djangae.contrib.gauth.urls')),
+    url(r'^gauth/', include(djangae.contrib.gauth.urls))
 )
