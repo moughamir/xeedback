@@ -12,3 +12,4 @@ six
 git+https://github.com/potatolondon/appengine-pipelines.git
 git+https://github.com/potatolondon/potato-mapreduce.git#egg=mapreduce
 Pillow
+image

@@ -17,5 +17,5 @@ SECURE_REDIRECT_EXEMPT = [
 
 SECURE_CHECKS += ["feedapp.checks.check_csp_sources_not_unsafe"]
 
-DEBUG = True
-TEMPLATE_DEBUG = True
+DEBUG = False
+TEMPLATE_DEBUG = False

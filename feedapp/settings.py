@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 from djangae.settings_base import * #Set up some AppEngine specific stuff
 from django.core.urlresolvers import reverse_lazy
-
+from djangae.utils import on_production
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -27,6 +27,16 @@ SECRET_KEY = get_app_config().secret_key
 DEBUG = True
 
 TEMPLATE_DEBUG = True
+# DATABASE
+DATABASES = {
+    'default': {
+        'ENGINE': 'djangae.db.backends.appengine'
+    }
+}
+DATABASES['sql'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3'
+    }
 
 # Application definition
 
@@ -58,6 +68,9 @@ MIDDLEWARE_CLASSES = (
     'djangosecure.middleware.SecurityMiddleware',
 )
 
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates'),
+)
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.debug",
@@ -107,9 +120,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 if DEBUG:
     CSP_STYLE_SRC = ("'self'", "'unsafe-inline'")

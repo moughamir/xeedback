@@ -10,9 +10,11 @@
 
 <body>
     <section>
+    {% if posts %}
         {% for post in posts %}
         <article>
             <header>
+            <img src="{{ post.featured_image.url }}" alt="post.featured_image.name">
             <h1><a href="">{{ post.title }}</a></h1>
                 <p>published: {{ post.published_date }}</p>
             </header>
@@ -24,6 +26,11 @@
             </footer>
         </article>
         {% endfor %}
+    {% else %}
+    <article>
+        <h1>No Posts.</h1>
+    </article>
+    {% endif %}
     </section>
 </body>
 

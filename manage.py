@@ -1,4 +1,4 @@
-#!seedenv/bin/python2
+#!seed/bin/python
 import os
 import sys
 
