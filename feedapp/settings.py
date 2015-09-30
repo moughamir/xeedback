@@ -13,6 +13,7 @@ from django.core.urlresolvers import reverse_lazy
 from djangae.utils import on_production
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from djangae.contrib.gauth.settings import *
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -27,16 +28,6 @@ SECRET_KEY = get_app_config().secret_key
 DEBUG = True
 
 TEMPLATE_DEBUG = True
-# DATABASE
-DATABASES = {
-    'default': {
-        'ENGINE': 'djangae.db.backends.appengine'
-    }
-}
-DATABASES['sql'] = {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3'
-    }
 
 # Application definition
 
@@ -67,6 +58,7 @@ MIDDLEWARE_CLASSES = (
     'session_csrf.CsrfMiddleware',
     'djangosecure.middleware.SecurityMiddleware',
 )
+
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
@@ -137,6 +129,3 @@ CSP_FRAME_SRC = ("'self'", "www.google.com", "www.youtube.com", "accounts.google
 CSP_SCRIPT_SRC = ("'self'", "*.googleanalytics.com", "*.google-analytics.com", "ajax.googleapis.com")
 CSP_IMG_SRC = ("'self'", "data:", "s.ytimg.com", "*.googleusercontent.com", "*.gstatic.com")
 CSP_CONNECT_SRC = ("'self'", "plus.google.com", "www.google-analytics.com")
-
-
-from djangae.contrib.gauth.settings import *
